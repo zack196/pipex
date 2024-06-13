@@ -6,7 +6,7 @@
 /*   By: zel-oirg <zel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 08:16:05 by zel-oirg          #+#    #+#             */
-/*   Updated: 2024/06/11 18:19:44 by zel-oirg         ###   ########.fr       */
+/*   Updated: 2024/06/13 20:33:06 by zel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,15 @@ char	*write_in_file(char *lim)
 	return (file_name);
 }
 
-void	here_doc_first(char **av, int *fd_pipe, char **env)
+int	here_doc_first(char **av, char **env)
 {
 	pid_t	pid;
 	int		fd;
+	int		fd_pipe[2];
 	char	*file;
 
+	if (pipe(fd_pipe) == -1)
+		error("");
 	pid = fork();
 	if (pid == -1)
 		error("error forking");
@@ -81,14 +84,13 @@ void	here_doc_first(char **av, int *fd_pipe, char **env)
 		fd = open(file, O_RDONLY, 0777);
 		if (fd == -1)
 			error("error openning file! ");
-		if (dup2(fd, STDIN_FILENO) == -1)
-			error("error dupping tmp_file");
-		if (dup2(fd_pipe[1], STDOUT_FILENO) == -1)
-			error("error duping pipe file 1!");
-		close(fd_pipe[1]);
-		execute(av[3], env);
+		proc(fd, fd_pipe[1], av[3], env);//./pipex_bonus here_doc lim cat cat /dev/stdout
+		return(0);
 	}
-	close(fd_pipe[1]);
-	waitpid(pid, NULL, 0);
-	unlink(file);
+	else
+	{
+		close(fd_pipe[1]);
+		unlink(file);
+		return (fd_pipe[0]);
+	}
 }

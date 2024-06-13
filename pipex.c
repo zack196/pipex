@@ -6,7 +6,7 @@
 /*   By: zel-oirg <zel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 08:05:16 by zel-oirg          #+#    #+#             */
-/*   Updated: 2024/06/09 08:08:42 by zel-oirg         ###   ########.fr       */
+/*   Updated: 2024/06/13 19:04:22 by zel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	first_child(char *cmd, char *file, int *fd, char **env)
 		error("");
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
 		error("");
-	close(fd[0]);
 	close(fd[1]);
+	close(fd[0]);
 	close(file_in);
 	execute(cmd, env);
 }
