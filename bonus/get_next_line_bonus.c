@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+#include "../includes/libft/libft.h"
 
 char	*return_value(char **s)
 {
@@ -56,9 +57,31 @@ char	*get_next_line(int fd)
 	return (free(buff), buff = NULL, return_value(&res));
 }
 
-void	sp_close(int fd1, int fd2, int fd3)
+char	**my_split(char *str)
 {
-	close(fd1);
-	close(fd2);
-	close(fd3);
+	char	*tmp;
+	char	**res;
+	int		i;
+	
+	tmp = str;
+	while (*tmp)
+	{
+		while (!(*tmp == '\'' || *tmp == '\"') && *tmp)
+			tmp++;
+		while ((*tmp == '\'' || *tmp == '\"') && *tmp)
+			tmp++;
+		while (!(*tmp == '\'' || *tmp == '\"') && *tmp)
+		{
+			if (*tmp == ' ')
+				*tmp = 127;
+			tmp++;
+		}
+	}
+	res = ft_split(str, ' ');
+	i = -1;
+	while (res[++i])
+		while (*res[i])
+			if (*res[i]++ == 127)
+				*res[i] = ' ';
+	return (res);
 }

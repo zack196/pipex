@@ -96,13 +96,11 @@ void	cmd_fin(char **av, int ac, int pipe_in, char **env)
 		proc(pipe_in, fd_out, av[ac - 2], env);
 	}
 	else
-	{
 		close(pipe_in);
-	}
 }
 void	f()
 {
-	// system("leaks pipex_bonus");
+	system("leaks pipex_bonus");
 	system("lsof -c pipex_bonus");
 }
 int	main(int ac, char **av, char **env)

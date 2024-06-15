@@ -27,5 +27,5 @@ void	error(char *err_msg);
 void	execute(char *cmd, char **env);
 void	sp_close(int fd1, int fd2, int fd3);
 void	proc(int fd_in, int fd_out, char *cmd, char **env);
-
+char	**my_split(char *str);
 #endif
