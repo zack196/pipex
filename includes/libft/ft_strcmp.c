@@ -14,10 +14,19 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	while (*s1 && *s2 && *s1 == *s2)
+    if (ft_strlen(s2) != ft_strlen(s1) - 1)
+		return (-1);
+	if (!*s2)
+		s1++;
+	while (*s1 && *s1 == *s2 && *s2 )
 	{
 		s1++;
+		if (*s1 == '\n')
+		{
+			s1--;
+			break;
+		}
 		s2++;
 	}
-	return (*s1 - *s2);
+	return (*s2 - *s1);
 }

@@ -22,7 +22,7 @@
 # include "get_next_line_bonus.h"
 # include "../includes/libft/libft.h"
 
-int	here_doc_first(char **av, char **env);
+int	here_doc_first(char **av,int ac, char **env);
 void	error(char *err_msg);
 void	execute(char *cmd, char **env);
 void	sp_close(int fd1, int fd2, int fd3);

@@ -23,7 +23,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (NULL);
 	if (dst < src)
 		return (ft_memcpy(dst, src, len));
-	while (len-- && len >= 0)
+	while (len-- && len > 0)
 	{
 		*(dp + len) = *(sp + len);
 	}

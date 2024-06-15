@@ -116,7 +116,7 @@ int	main(int ac, char **av, char **env)
 	if (!ft_strncmp(av[1], "here_doc", 8))
 	{
 		i = 4;
-		fd = here_doc_first(av, env);
+		fd = here_doc_first(av, ac, env);
 	}
 	else
 	{

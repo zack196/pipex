@@ -65,32 +65,30 @@ char	*write_in_file(char *lim)
 	return (file_name);
 }
 
-int	here_doc_first(char **av, char **env)
+int	here_doc_first(char **av,int ac, char **env)
 {
 	pid_t	pid;
 	int		fd;
 	int		fd_pipe[2];
 	char	*file;
 
+	if (ac < 6)
+		return(ft_putstr_fd("here_doc need at least 2 cmd\n", 2), exit(1), 67);
 	if (pipe(fd_pipe) == -1)
 		error("");
+	file = write_in_file(av[2]);
 	pid = fork();
 	if (pid == -1)
 		error("error forking");
 	if (pid == 0)
 	{
 		close(fd_pipe[0]);
-		file = write_in_file(av[2]);
 		fd = open(file, O_RDONLY, 0777);
 		if (fd == -1)
 			error("error openning file! ");
+		unlink(file);
 		proc(fd, fd_pipe[1], av[3], env);//./pipex_bonus here_doc lim cat cat /dev/stdout
 		return(0);
 	}
-	else
-	{
-		close(fd_pipe[1]);
-		unlink(file);
-		return (fd_pipe[0]);
-	}
+	return (close(fd_pipe[1]), fd_pipe[0]);
 }

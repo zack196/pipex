@@ -63,9 +63,7 @@ static char	*extract(char const *s, char c)
 {
 	int		c_word;
 	char	*res;
-	int		i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	c_word = word(s, c);

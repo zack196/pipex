@@ -76,7 +76,7 @@ char	*get_cmd_path(char *cmd, char **env)
 		if (!cmd_path)
 			error("Error joining !");
 		if (!access(cmd_path, F_OK))
-			return (free_double(env_path), free(cmd_path), cmd_path);
+			return (free_double(env_path), cmd_path);
 		free(cmd_path);
 	}
 	return (ft_putstr_fd("bash: ", 2), ft_putstr_fd(cmd, 2),

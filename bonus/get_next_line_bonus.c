@@ -26,7 +26,7 @@ char	*return_value(char **s)
 		i++;
 	if (*(str + i) == '\n')
 		i++;
-	res = ft_str_dup(str, i - 1);
+	res = ft_str_dup(str, i);
 	*s = ft_str_dup(str + i, ft_str_len(str + i));
 	return (free(str), str = NULL, res);
 }
