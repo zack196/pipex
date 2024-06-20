@@ -6,7 +6,7 @@
 /*   By: zel-oirg <zel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 08:05:33 by zel-oirg          #+#    #+#             */
-/*   Updated: 2024/06/11 15:52:09 by zel-oirg         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:02:19 by zel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	execute(char *cmd, char **env)
 	char	**cmd_arg;
 	char	*cmd_path;
 
-	cmd_arg = ft_split(cmd, ' ');
+	cmd_arg = my_split(cmd);
 	if (!cmd_arg)
 		error("error spliting!");
 	cmd_path = get_cmd_path(cmd_arg[0], env);

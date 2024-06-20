@@ -15,13 +15,15 @@ INCLUDE_B = bonus/pipex_bonus.h
 INCLUDE_GET_NEXT_LINE = bonus/get_next_line_bonus.h
 
 SRC = pipex_utils.c \
-      pipex.c
+      pipex.c	\
+	  split.c
 
 SRC_B = bonus/executing_cmd_bonus.c \
         bonus/get_next_line_bonus.c \
         bonus/get_next_line_utils_bonus.c \
         bonus/here_doc_bonus.c \
-        bonus/pipex_bonus.c
+        bonus/pipex_bonus.c	\
+		bonus/split_bonus.c	
 
 OBJ = $(SRC:.c=.o)
 OBJ_B = $(SRC_B:.c=.o)

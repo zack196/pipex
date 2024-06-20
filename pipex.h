@@ -6,7 +6,7 @@
 /*   By: zel-oirg <zel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 08:19:11 by zel-oirg          #+#    #+#             */
-/*   Updated: 2024/06/09 08:19:32 by zel-oirg         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:17:54 by zel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	free_2ptr(char **s);
 char	*get_path(char *cmd, char **env);
 void	first_child(char *cmd, char *file, int *fd, char **env);
 void	second_child(char *cmd, char *file, int *fd, char **env);
-int		main(int ac, char **av, char **env);
+char	**my_split(char *str);
 
 #endif

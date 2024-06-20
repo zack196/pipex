@@ -6,7 +6,7 @@
 /*   By: zel-oirg <zel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 08:10:40 by zel-oirg          #+#    #+#             */
-/*   Updated: 2024/06/13 20:24:09 by zel-oirg         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:59:38 by zel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,4 @@ char	*get_next_line(int fd)
 			break ;
 	}
 	return (free(buff), buff = NULL, return_value(&res));
-}
-
-char	**my_split(char *str)
-{
-	char	*tmp;
-	char	**res;
-	int		i;
-	
-	tmp = str;
-	while (*tmp)
-	{
-		while (!(*tmp == '\'' || *tmp == '\"') && *tmp)
-			tmp++;
-		while ((*tmp == '\'' || *tmp == '\"') && *tmp)
-			tmp++;
-		while (!(*tmp == '\'' || *tmp == '\"') && *tmp)
-		{
-			if (*tmp == ' ')
-				*tmp = 127;
-			tmp++;
-		}
-	}
-	res = ft_split(str, ' ');
-	i = -1;
-	while (res[++i])
-		while (*res[i])
-			if (*res[i]++ == 127)
-				*res[i] = ' ';
-	return (res);
 }

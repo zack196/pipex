@@ -6,7 +6,7 @@
 /*   By: zel-oirg <zel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:03:40 by zel-oirg          #+#    #+#             */
-/*   Updated: 2024/06/11 18:21:36 by zel-oirg         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:27:41 by zel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-    if (ft_strlen(s2) != ft_strlen(s1) - 1)
+	if (ft_strlen(s2) != ft_strlen(s1) - 1)
 		return (-1);
 	if (!*s2)
 		s1++;
-	while (*s1 && *s1 == *s2 && *s2 )
+	while (*s1 && *s1 == *s2 && *s2)
 	{
 		s1++;
 		if (*s1 == '\n')
 		{
 			s1--;
-			break;
+			break ;
 		}
 		s2++;
 	}

@@ -6,7 +6,7 @@
 /*   By: zel-oirg <zel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 02:34:48 by zel-oirg          #+#    #+#             */
-/*   Updated: 2024/06/13 20:27:29 by zel-oirg         ###   ########.fr       */
+/*   Updated: 2024/06/20 21:38:14 by zel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	first_cmd(char **av, char **env)
 
 int	cmd_med(char *cmd, int pipe_in, char **env)
 {
-	int	fd_pipe[2];
+	int		fd_pipe[2];
 	pid_t	pid;
-	
+
 	if (pipe(fd_pipe) == -1)
 		error("");
 	pid = fork();
@@ -74,8 +74,6 @@ int	cmd_med(char *cmd, int pipe_in, char **env)
 		return (fd_pipe[0]);
 	}
 }
-
-
 
 void	cmd_fin(char **av, int ac, int pipe_in, char **env)
 {
@@ -98,27 +96,21 @@ void	cmd_fin(char **av, int ac, int pipe_in, char **env)
 	else
 		close(pipe_in);
 }
-void	f()
-{
-	system("leaks pipex_bonus");
-	system("lsof -c pipex_bonus");
-}
+
 int	main(int ac, char **av, char **env)
 {
 	int	i;
 	int	fd;
 
-	// atexit(f);
-	if (ac < 5)
-		return (ft_putstr_fd("give me more cmd\n", 1), 1);// -42
+	usage(ac, av);
 	if (!ft_strncmp(av[1], "here_doc", 8))
 	{
 		i = 4;
-		fd = here_doc_first(av, ac, env);
+		fd = here_doc_first(av, env);
 	}
 	else
 	{
-		i = 3;	
+		i = 3;
 		fd = first_cmd(av, env);
 	}
 	while (i < ac - 2)
